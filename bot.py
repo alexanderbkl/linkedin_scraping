@@ -20,7 +20,11 @@ def scroll_to_bottom():
 def scroll_to_bottom_more_posts():
     browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     time.sleep(0.3)
-    more_posts_button = browser.find_element(By.XPATH, "//div[contains(@class, 'text-align-center')]/button[contains(@class, 'artdeco-button')]")
+    try:
+        more_posts_button = browser.find_element(By.XPATH, "//div[contains(@class, 'text-align-center')]/button[contains(@class, 'artdeco-button')]")
+    except Exception as e:
+        print("More profile posts")
+        more_posts_button = browser.find_element(By.XPATH, "//section/div[contains(@class,pv0.ph5)]/div/div[contains(@class, scaffold-finite-scroll.scaffold-finite-scroll--finite.full-width)]/div/div[contains(@class, display-flex.p5)]/button/span")	
     browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", more_posts_button)
     time.sleep(0.2)
     browser.execute_script("arguments[0].click();", more_posts_button)
@@ -109,7 +113,7 @@ while browser.find_elements(By.XPATH, CAPTCHA_IFRAME_XPATH):
 
 time.sleep(2)
 
-browser.get("https://www.linkedin.com/feed/")
+browser.get("https://www.linkedin.com/in/franciscofernandezyuste/recent-activity/all/")
 time.sleep(4)
 
 while True:
