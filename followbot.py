@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Constants
 USERNAME = 'asederado1@gmail.com'
-PASSWORD = 'mauzz123'
+PASSWORD = ''
 CAPTCHA_IFRAME_XPATH = "//iframe[@id='captcha-internal']"
 
 

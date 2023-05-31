@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Constants
 USERNAME = 'asederado1@gmail.com'
-PASSWORD = ''
+PASSWORD = 'mauzz123'
 CAPTCHA_IFRAME_XPATH = "//iframe[@id='captcha-internal']"
 BUTTON_XPATH = "//button[contains(@id, 'ember') and contains(@class, 'artdeco-button artdeco-button--muted artdeco-button--4 artdeco-button--tertiary ember-view social-actions-button react-button__trigger')]"
 BUTTON_ACTUALIZAR_XPATH = "//div/main/div[4]/div/div[2]/div/button"
