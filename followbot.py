@@ -12,7 +12,11 @@ CAPTCHA_IFRAME_XPATH = "//iframe[@id='captcha-internal']"
 
 
 #button_xpath is ul with class reusable-search__entity-result-list list-style-none, inside there is li, inside li there is a div, inside a div there is a div, inside div pick the third div, inside div there is a div, inside div there is a button
-BUTTON_XPATH = "//main/div/div/div[1]/div/ul/li/div/div/div[3]/div/button"
+
+#conectar tradicional
+#BUTTON_XPATH = "//main/div/div/div[1]/div/ul/li/div/div/div[3]/div/button"
+#conectar en busqueda
+BUTTON_XPATH = "//span[@class='artdeco-button__text'][preceding-sibling::li-icon][text()='Conectar']/parent::button"
 
 BUTTON_ACTUALIZAR_XPATH = "/html/body/div[6]/div[3]/div/div/div[2]/div/div/main/div[4]/div/div[2]/div/button"
 
@@ -69,7 +73,6 @@ def click_button(i, clicked_ids):
             return True
     except Exception as e:
         print(f"An exception occurred with the liking procedure: {str(e)}")
-        loop_count+=1
         return False
 
 def get_buttons():
@@ -113,7 +116,7 @@ def next_page(page):
     try:
         #move browser to https://www.linkedin.com/search/results/people/?connectionOf=%5B%22ACoAAChwzx4Bi1JGknN8poTBkm89mxQd-b_nB1E%22%5D&network=%5B%22F%22%2C%22S%22%5D&origin=MEMBER_PROFILE_CANNED_SEARCH&page=NUMBER&sid=rcL
         #where NUMBER is the page number
-        browser.get(f"https://www.linkedin.com/search/results/people/?connectionOf=%5B%22ACoAAChwzx4Bi1JGknN8poTBkm89mxQd-b_nB1E%22%5D&network=%5B%22F%22%2C%22S%22%5D&origin=MEMBER_PROFILE_CANNED_SEARCH&page={page}&sid=rcL")
+        browser.get(f"https://www.linkedin.com/search/results/people/?geoUrn=%5B%22105088894%22%2C%22105646813%22%5D&keywords=CEO&origin=GLOBAL_SEARCH_HEADER&sid=vT9&page={page}")
         #page_btn = browser.find_element(By.XPATH, f"//button[@aria-label='Página {page}']")
         #browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", page_btn)
         time.sleep(2)
@@ -130,7 +133,7 @@ while browser.find_elements(By.XPATH, CAPTCHA_IFRAME_XPATH):
 
 time.sleep(2)
 
-browser.get("https://www.linkedin.com/search/results/people/?connectionOf=%5B%22ACoAAChwzx4Bi1JGknN8poTBkm89mxQd-b_nB1E%22%5D&network=%5B%22F%22%2C%22S%22%5D&origin=MEMBER_PROFILE_CANNED_SEARCH&sid=Q~!")
+browser.get("https://www.linkedin.com/search/results/people/?geoUrn=%5B%22105088894%22%2C%22105646813%22%5D&keywords=CEO&origin=GLOBAL_SEARCH_HEADER&sid=vT9")
 time.sleep(4)
 loop_count = 0
 
@@ -141,7 +144,6 @@ while True:
     buttons = get_buttons()
 
     if len(buttons) == 0: 
-        print("len 0")
         scroll_to_bottom()
         if not next_page(loop_count):
             print("error actualizando len 0 y loop count", loop_count)

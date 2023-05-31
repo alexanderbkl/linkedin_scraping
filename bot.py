@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # Constants
 USERNAME = 'asederado1@gmail.com'
-PASSWORD = 'mauzz123'
+PASSWORD = ''
 CAPTCHA_IFRAME_XPATH = "//iframe[@id='captcha-internal']"
 BUTTON_XPATH = "//button[contains(@id, 'ember') and contains(@class, 'artdeco-button artdeco-button--muted artdeco-button--4 artdeco-button--tertiary ember-view social-actions-button react-button__trigger')]"
 BUTTON_ACTUALIZAR_XPATH = "//div/main/div[4]/div/div[2]/div/button"
@@ -24,7 +24,7 @@ def scroll_to_bottom_more_posts():
         more_posts_button = browser.find_element(By.XPATH, "//div[contains(@class, 'text-align-center')]/button[contains(@class, 'artdeco-button')]")
     except Exception as e:
         print("More profile posts")
-        more_posts_button = browser.find_element(By.XPATH, "//section/div[contains(@class,pv0.ph5)]/div/div[contains(@class, scaffold-finite-scroll.scaffold-finite-scroll--finite.full-width)]/div/div[contains(@class, display-flex.p5)]/button/span")	
+        more_posts_button = browser.find_element(By.XPATH, "//div/div[contains(@class, scaffold-finite-scroll.scaffold-finite-scroll--finite.full-width)]/div/div[contains(@class, display-flex.p5)]/button/span")	
     browser.execute_script("arguments[0].scrollIntoView({block: 'center'});", more_posts_button)
     time.sleep(0.2)
     browser.execute_script("arguments[0].click();", more_posts_button)
@@ -113,7 +113,7 @@ while browser.find_elements(By.XPATH, CAPTCHA_IFRAME_XPATH):
 
 time.sleep(2)
 
-browser.get("https://www.linkedin.com/in/franciscofernandezyuste/recent-activity/all/")
+browser.get("https://www.linkedin.com/feed/")
 time.sleep(4)
 
 while True:
